@@ -1,0 +1,15 @@
+# Hey Hermie
+
+Available as an openWakeWord ONNX head and a microWakeWord manifest plus TFLite
+model. The shared openWakeWord frontend stays bundled with the client.
+
+The dictionary lists installable artifacts; inclusion is not a device-validation
+claim. These entries preserve the published 2026-11-09 versions, not an automatic
+selection of the newest training candidate.
+
+- openWakeWord evaluation: Human microphone host replay; see scoped recommendation and noisy-bar summary. Target-device validation is separate.
+- microWakeWord evaluation: Human microphone host replay; see scoped recommendation and noisy-bar summary. Target-device validation is separate.
+
+Source: [versioned model release](https://github.com/Keryxion/wakeword-training/releases/tag/wake-models-2026-11-09).
+Evaluation and detector settings: [training catalog](https://github.com/Keryxion/wakeword-training/blob/main/catalog/models.json).
+License notes: Training datasets include noncommercial/share-alike terms; retain attribution. See repository documentation.
