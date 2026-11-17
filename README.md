@@ -20,23 +20,54 @@ This repository supplies data; runtime support is specified in
 
 ## Dictionary index
 
-Start with [`index.json`](index.json):
+Start with [`index.json`](index.json). It contains a format `version` and
+an `entries` array with discovery metadata, for example:
 
 ```json
 {
   "version": 1,
   "entries": [
-    "words/hey_hermie/wakeword.json",
-    "words/hey_penny/wakeword.json",
-    "words/hey_sakura/wakeword.json"
+    {
+      "id": "hey_sakura",
+      "phrase": "Hey Sakura",
+      "description": "English Hey Sakura wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name",
+        "bundled-default"
+      ],
+      "status": "experimental",
+      "manifest": "words/hey_sakura/wakeword.json",
+      "readme": "words/hey_sakura/README.md"
+    }
   ]
 }
 ```
 
-`version` identifies the index format. `entries` lists repository-relative
-manifest paths. Fetch the index and manifests from the same resolved commit;
-reject unsupported versions. Every phrase is listed exactly once. The manifest
-contains the phrase and models; the index does not duplicate them.
+The listing supports browsing, searching by description or tags, and filtering
+by language and engine before fetching a model manifest.
+
+- `id` is the stable entry slug; `phrase` is its exact wake claim text.
+- `description`, `languages` (language tags), and `tags` support discovery.
+- `engines` lists the formats actually present in the manifest.
+- Each entry's `version` is `major.minor.patch`; it is separate from the root
+  index format version. Start entries at `1.0.0` and bump the entry version
+  when its model artifacts or installation requirements change.
+- `status` is `experimental` or `device_validated`. The latter requires linked
+  target-device evidence in the entry README; host replay alone does not qualify.
+- `manifest` and `readme` are repository-relative paths to the entry files.
+
+Fetch the index and manifests from the same resolved commit; reject unsupported
+index versions. Every phrase is listed exactly once. Validation checks that the
+listing's ID, phrase, engines, and README agree with its manifest and directory.
+Artifact URLs and hashes remain in the manifest.
 
 ## Entry format
 

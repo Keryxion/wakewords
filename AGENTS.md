@@ -1,7 +1,7 @@
 # Repository instructions
 
 This repository is an install dictionary. Keep one phrase per words/<slug>/
-folder with wakeword.json and README.md, listed once in the root index.json. Keep training, evaluation tooling and
+folder with wakeword.json and README.md, listed once in the root index.json with accurate discovery metadata. Keep training, evaluation tooling and
 model binaries in Keryxion/wakeword-training.
 
 Use versioned release URLs and verify SHA-256 for every file, including both

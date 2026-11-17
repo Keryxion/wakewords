@@ -1,8 +1,63 @@
 {
   "version": 1,
   "entries": [
-    "words/hey_hermie/wakeword.json",
-    "words/hey_penny/wakeword.json",
-    "words/hey_sakura/wakeword.json"
+    {
+      "id": "hey_hermie",
+      "phrase": "Hey Hermie",
+      "description": "English Hey Hermie wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name"
+      ],
+      "status": "experimental",
+      "manifest": "words/hey_hermie/wakeword.json",
+      "readme": "words/hey_hermie/README.md"
+    },
+    {
+      "id": "hey_penny",
+      "phrase": "Hey Penny",
+      "description": "English Hey Penny wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name"
+      ],
+      "status": "experimental",
+      "manifest": "words/hey_penny/wakeword.json",
+      "readme": "words/hey_penny/README.md"
+    },
+    {
+      "id": "hey_sakura",
+      "phrase": "Hey Sakura",
+      "description": "English Hey Sakura wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name",
+        "bundled-default"
+      ],
+      "status": "experimental",
+      "manifest": "words/hey_sakura/wakeword.json",
+      "readme": "words/hey_sakura/README.md"
+    }
   ]
 }
