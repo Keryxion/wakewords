@@ -25,9 +25,86 @@ keeps its previous wake word until the new model loads successfully.
 This repository supplies data; runtime support is specified in
 [hermes-converse PR #132](https://github.com/Keryxion/hermes-converse/pull/132).
 
+## Dictionary index
+
+Start with [`index.json`](index.json). It contains a format `version` and
+an `entries` array with discovery metadata, for example:
+
+```json
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "hey_sakura",
+      "phrase": "Hey Sakura",
+      "description": "English Hey Sakura wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name",
+        "bundled-default"
+      ],
+      "manifest": "words/hey_sakura/wakeword.json",
+      "readme": "words/hey_sakura/README.md"
+    }
+  ]
+}
+```
+
+The listing supports browsing, searching by description or tags, and filtering
+by language and engine before fetching a model manifest.
+
+- `id` is the stable entry slug; `phrase` is its exact wake claim text.
+- `description`, `languages` (language tags), and `tags` support discovery.
+- `engines` lists the formats actually present in the manifest.
+- Each entry's `version` uses semver: `1.0.0` for a stable release,
+  `1.0.0-bldf` or `1.0.0-beta.1` for a prerelease, and optional build metadata
+  such as `1.0.0-beta.1+build.42`. This is separate from the root index format
+  version. Bump the entry version when its model artifacts or installation
+  requirements change.
+- `manifest` and `readme` are repository-relative paths to the entry files.
+
+Fetch the index and manifests from the same resolved commit; reject unsupported
+index versions. Every phrase is listed exactly once. Validation checks that the
+listing's ID, phrase, engines, and README agree with its manifest and directory.
+Artifact URLs and hashes remain in the manifest.
+
+## Sensitivity and specificity
+
+Each index entry can include `evaluations`, keyed by engine. Results describe
+one named test dataset and the exact model hash and detector settings. The
+starter measurements come from the recorded `bar-all-20261110-quick` session;
+the source report is pinned to a training-repository commit.
+
+- **Sensitivity:** intended wake cases detected / total positive cases.
+- **Specificity:** negative cases that stayed quiet / total negative cases.
+
+Each metric is a percentage from 0 to 100, rounded to two decimal places.
+For example, the Sakura openWakeWord result is:
+
+```json
+{
+  "sensitivity": 50.0,
+  "specificity": 100.0
+}
+```
+
+The index stores percentages; the linked source report preserves test counts.
+A case counts once, even if its recording triggers repeatedly. An unmeasured metric or engine evaluation is
+`null`; missing evidence is never recorded as zero. Each measured evaluation
+also includes `model_sha256`, `dataset`, `conditions`, `settings`, and the source
+`report` URL. Keep distinct test sessions separate; do not pool synthetic and
+human results or imply that host replay is target-device testing.
+
 ## Entry format
 
-Discover entries at `words/<slug>/wakeword.json`. Each contains:
+Each manifest at `words/<slug>/wakeword.json` contains:
 
 - `phrase`: the exact phrase sent in cooperative wake claims.
 - `models`: formats available for that phrase, keyed by `micro_wake_word` or
@@ -50,7 +127,7 @@ installed model. A phrase configuration alone is not an installable detector.
 
 1. Publish the finished model files as versioned release assets in the training
    repository, with checksums, attribution and evaluation evidence.
-2. Add or update `words/<slug>/wakeword.json` and its README. Preserve the exact
+2. Add or update `words/<slug>/wakeword.json`, its README, and `index.json`. Preserve the exact
    phrase, supported engines, pinned artifact URLs and verified hashes. Document
    evaluation limitations and license terms; do not infer device validation.
 3. Verify downloaded bytes against every hash. Run `python3 tools/validate.py`

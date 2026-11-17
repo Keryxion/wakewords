@@ -2,17 +2,75 @@
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 from urllib.parse import urlparse
 
 
+NUMERIC = r"(?:0|[1-9][0-9]*)"
+PRERELEASE = r"(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)"
+SEMVER = re.compile(
+    rf"{NUMERIC}\.{NUMERIC}\.{NUMERIC}"
+    rf"(?:-{PRERELEASE}(?:\.{PRERELEASE})*)?"
+    r"(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?"
+)
+
+
+def validate_evaluations(metadata, models):
+    evaluations = metadata.get("evaluations", {})
+    if not isinstance(evaluations, dict) or set(evaluations) - set(models):
+        raise ValueError("Evaluations must refer to an available engine")
+    for engine, evaluation in evaluations.items():
+        if evaluation is None:
+            continue
+        if not isinstance(evaluation, dict):
+            raise ValueError("Expected evaluation metadata or null")
+        artifact = models[engine]
+        if engine == "micro_wake_word":
+            artifact = artifact["files"][0]
+        if evaluation.get("model_sha256") != artifact["sha256"]:
+            raise ValueError("Evaluation refers to a different model")
+        for field in ("dataset", "conditions", "report"):
+            if not isinstance(evaluation.get(field), str) or not evaluation[field].strip():
+                raise ValueError(f"Missing evaluation {field}")
+        report = urlparse(evaluation["report"])
+        if report.scheme != "https" or not report.hostname:
+            raise ValueError("Expected HTTPS evaluation report")
+        if not isinstance(evaluation.get("settings"), dict) or not evaluation["settings"]:
+            raise ValueError("Missing detector settings")
+        for name in ("sensitivity", "specificity"):
+            if name not in evaluation:
+                raise ValueError(f"Missing {name}; use null for unmeasured results")
+            metric = evaluation[name]
+            if metric is None:
+                continue
+            if type(metric) not in (int, float) or not math.isfinite(metric) or not 0 <= metric <= 100:
+                raise ValueError(f"Expected {name} percentage between 0 and 100, or null")
+
+
 def validate(root, artifacts=None):
-    entries = sorted((root / "words").glob("*/wakeword.json"))
-    if not entries:
-        raise ValueError("Dictionary has no entries")
+    index = json.loads((root / "index.json").read_text())
+    if type(index.get("version")) is not int or index["version"] != 1:
+        raise ValueError("Unsupported dictionary index version")
+    listing = index.get("entries")
+    if not isinstance(listing, list) or not listing:
+        raise ValueError("Dictionary index must list entries")
+    if any(not isinstance(item, dict) for item in listing):
+        raise ValueError("Dictionary entries must be metadata objects")
+    paths = [item.get("manifest") for item in listing]
+    if any(not isinstance(path, str) or not re.fullmatch(
+        r"words/[a-z0-9]+(?:_[a-z0-9]+)*/wakeword\.json", path
+    ) for path in paths):
+        raise ValueError("Invalid dictionary entry path")
+    if len(set(paths)) != len(paths):
+        raise ValueError("Duplicate dictionary entry path")
+    actual = {path.relative_to(root).as_posix() for path in (root / "words").glob("*/wakeword.json")}
+    if set(paths) != actual:
+        raise ValueError("Index must list every entry exactly once, with no missing files")
+    entries = [root / path for path in paths]
     phrases = set()
-    for path in entries:
+    for path, metadata in zip(entries, listing):
         if not re.fullmatch(r"[a-z0-9]+(?:_[a-z0-9]+)*", path.parent.name):
             raise ValueError(f"Invalid entry slug: {path.parent.name}")
         entry = json.loads(path.read_text())
@@ -20,11 +78,31 @@ def validate(root, artifacts=None):
         if not isinstance(phrase, str) or not phrase.strip() or phrase in phrases:
             raise ValueError(f"Empty or duplicate phrase in {path}")
         phrases.add(phrase)
+        if metadata.get("id") != path.parent.name or metadata.get("phrase") != phrase:
+            raise ValueError(f"Index identity differs from manifest: {path}")
+        description = metadata.get("description")
+        if not isinstance(description, str) or not description.strip():
+            raise ValueError(f"Missing description for {phrase}")
+        version = metadata.get("version")
+        if not isinstance(version, str) or not SEMVER.fullmatch(version):
+            raise ValueError(f"Expected semver entry version for {phrase}")
+        for field in ("languages", "engines", "tags"):
+            values = metadata.get(field)
+            if not isinstance(values, list) or not values or any(
+                not isinstance(value, str) or not value.strip() for value in values
+            ) or len(set(values)) != len(values):
+                raise ValueError(f"Expected unique nonempty {field} for {phrase}")
+        if any(not re.fullmatch(r"[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*", language) for language in metadata["languages"]):
+            raise ValueError(f"Invalid language tag for {phrase}")
+        if metadata.get("readme") != path.with_name("README.md").relative_to(root).as_posix():
+            raise ValueError(f"Index README differs from entry: {path}")
         if not path.with_name("README.md").is_file():
             raise ValueError(f"Missing README for {phrase}")
         models = entry["models"]
         if not isinstance(models, dict) or not models:
             raise ValueError(f"No models for {phrase}")
+        if set(metadata["engines"]) != set(models):
+            raise ValueError(f"Index engine compatibility differs from manifest: {path}")
         for engine, model in models.items():
             if engine not in ("micro_wake_word", "open_wake_word"):
                 raise ValueError(f"Unknown engine {engine}")
@@ -52,6 +130,7 @@ def validate(root, artifacts=None):
                 model_name = Path(urlparse(files[0]["url"]).path).name
                 if manifest["model"] != model_name:
                     raise ValueError(f"Manifest references a different model for {phrase}")
+        validate_evaluations(metadata, models)
     return len(entries)
 
 

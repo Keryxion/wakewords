@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "hey_hermie",
+      "phrase": "Hey Hermie",
+      "description": "English Hey Hermie wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name"
+      ],
+      "manifest": "words/hey_hermie/wakeword.json",
+      "readme": "words/hey_hermie/README.md",
+      "evaluations": {
+        "micro_wake_word": {
+          "sensitivity": 100.0,
+          "specificity": 87.23,
+          "model_sha256": "5c589d402d238392a466ab553520f10992bdaf41a0d123e9459b94ce1384385e",
+          "dataset": "bar-all-20261110-quick",
+          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
+          "settings": {
+            "cutoff_uint8": 232,
+            "sliding_window_size": 5,
+            "warmup_below_cutoff_outputs": 100
+          },
+          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
+        },
+        "open_wake_word": {
+          "sensitivity": 0.0,
+          "specificity": 100.0,
+          "model_sha256": "0bed403c967f3ba7e7b67fc75b18edd5cc1d230628d78d571970005ae2c407f4",
+          "dataset": "bar-all-20261110-quick",
+          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
+          "settings": {
+            "threshold": 0.5,
+            "consecutive_frames": 3
+          },
+          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
+        }
+      }
+    },
+    {
+      "id": "hey_penny",
+      "phrase": "Hey Penny",
+      "description": "English Hey Penny wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name"
+      ],
+      "manifest": "words/hey_penny/wakeword.json",
+      "readme": "words/hey_penny/README.md",
+      "evaluations": {
+        "micro_wake_word": {
+          "sensitivity": 36.36,
+          "specificity": 100.0,
+          "model_sha256": "879a9b904a8c2405d4e66d87d7111f6ab2d2eb73f9a7a2128bfac68a2c4e41e4",
+          "dataset": "bar-all-20261110-quick",
+          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
+          "settings": {
+            "cutoff_uint8": 232,
+            "sliding_window_size": 5,
+            "warmup_below_cutoff_outputs": 100
+          },
+          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
+        },
+        "open_wake_word": {
+          "sensitivity": 27.27,
+          "specificity": 100.0,
+          "model_sha256": "a022cbf11645d7b09584e69e7e65f278a231160ba283730b084fbdddcac93f45",
+          "dataset": "bar-all-20261110-quick",
+          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
+          "settings": {
+            "threshold": 0.5,
+            "consecutive_frames": 3
+          },
+          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
+        }
+      }
+    },
+    {
+      "id": "hey_sakura",
+      "phrase": "Hey Sakura",
+      "description": "English Hey Sakura wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name",
+        "bundled-default"
+      ],
+      "manifest": "words/hey_sakura/wakeword.json",
+      "readme": "words/hey_sakura/README.md",
+      "evaluations": {
+        "micro_wake_word": {
+          "sensitivity": 100.0,
+          "specificity": 95.56,
+          "model_sha256": "fccfbb47d37f6d4a00f1c6e3ac44f3ae3c08a1e4a7e9e4e681f58ef597af52a1",
+          "dataset": "bar-all-20261110-quick",
+          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
+          "settings": {
+            "cutoff_uint8": 232,
+            "sliding_window_size": 5,
+            "warmup_below_cutoff_outputs": 100
+          },
+          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
+        },
+        "open_wake_word": {
+          "sensitivity": 50.0,
+          "specificity": 100.0,
+          "model_sha256": "0dee29ecdfe4abe8f01766bc56618dbc6fc11eb870e52416124597bd8412527c",
+          "dataset": "bar-all-20261110-quick",
+          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
+          "settings": {
+            "threshold": 0.5,
+            "consecutive_frames": 3
+          },
+          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
+        }
+      }
+    }
+  ]
+}
