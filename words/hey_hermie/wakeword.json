@@ -1,0 +1,19 @@
+{
+  "phrase": "Hey Hermie",
+  "models": {
+    "open_wake_word": {
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_hermie-openwakeword.onnx",
+      "sha256": "0bed403c967f3ba7e7b67fc75b18edd5cc1d230628d78d571970005ae2c407f4"
+    },
+    "micro_wake_word": {
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_hermie-microwakeword.json",
+      "sha256": "5d73a8adf2571e030c62747b2528da546a54d547820185a3fce0a045d33de41a",
+      "files": [
+        {
+          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_hermie-microwakeword.tflite",
+          "sha256": "5c589d402d238392a466ab553520f10992bdaf41a0d123e9459b94ce1384385e"
+        }
+      ]
+    }
+  }
+}

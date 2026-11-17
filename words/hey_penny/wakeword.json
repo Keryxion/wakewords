@@ -1,0 +1,19 @@
+{
+  "phrase": "Hey Penny",
+  "models": {
+    "open_wake_word": {
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_penny-openwakeword.onnx",
+      "sha256": "a022cbf11645d7b09584e69e7e65f278a231160ba283730b084fbdddcac93f45"
+    },
+    "micro_wake_word": {
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_penny-microwakeword.json",
+      "sha256": "bf53d16c40d9e2a45058592861f1669d6043004905e4410ecf138c75c4a99d65",
+      "files": [
+        {
+          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_penny-microwakeword.tflite",
+          "sha256": "879a9b904a8c2405d4e66d87d7111f6ab2d2eb73f9a7a2128bfac68a2c4e41e4"
+        }
+      ]
+    }
+  }
+}
