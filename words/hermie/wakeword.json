@@ -2,15 +2,15 @@
   "phrase": "Hermie",
   "models": {
     "open_wake_word": {
-      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hermie-openwakeword.onnx",
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/hermie-openwakeword.onnx",
       "sha256": "4823d847f5adf131b2d476ffb7a270327f08d6dafde823a91af9aaa202ff2e79"
     },
     "micro_wake_word": {
-      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hermie-microwakeword.json",
-      "sha256": "2db9f6a487af3491ebd73dee972f1b38a3117feede76f5ba37b5985b13c7d097",
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/hermie-microwakeword.json",
+      "sha256": "87fee63b0b25e8a0d6924bd8fb43a53abb0ff83142eaaaa421cd39e3135db615",
       "files": [
         {
-          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hermie-microwakeword.tflite",
+          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/hermie-microwakeword.tflite",
           "sha256": "9e5c56969da6fd3b7528a9487d28f3fb526dcffff161cdb46594a1d500ee0f46"
         }
       ]

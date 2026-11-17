@@ -10,6 +10,6 @@ selection of the newest training candidate.
 - openWakeWord evaluation: Human microphone host replay; see scoped recommendation and noisy-bar summary. Target-device validation is separate.
 - microWakeWord evaluation: Human microphone host replay; see scoped recommendation and noisy-bar summary. Target-device validation is separate.
 
-Source: [models-2026-11-17 release](https://github.com/Keryxion/wakewords/releases/tag/models-2026-11-17). Built and first published in the training repository as [wake-models-2026-11-09](https://github.com/Keryxion/wakeword-training/releases/tag/wake-models-2026-11-09).
+Source: [models-2026-11-17.1 release](https://github.com/Keryxion/wakewords/releases/tag/models-2026-11-17.1). Built and first published in the training repository as [wake-models-2026-11-09](https://github.com/Keryxion/wakeword-training/releases/tag/wake-models-2026-11-09).
 Evaluation and detector settings: [training catalog](https://github.com/Keryxion/wakeword-training/blob/main/catalog/models.json).
 License notes: Training datasets include noncommercial/share-alike terms; retain attribution. See repository documentation.

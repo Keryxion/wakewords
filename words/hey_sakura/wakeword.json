@@ -2,15 +2,15 @@
   "phrase": "Hey Sakura",
   "models": {
     "open_wake_word": {
-      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_sakura-openwakeword.onnx",
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/hey_sakura-openwakeword.onnx",
       "sha256": "0dee29ecdfe4abe8f01766bc56618dbc6fc11eb870e52416124597bd8412527c"
     },
     "micro_wake_word": {
-      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_sakura-microwakeword.json",
-      "sha256": "7f26022e59a8a91bb2333dfeba090fbad5430aa1373cc75b90bdd8d2008320d1",
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/hey_sakura-microwakeword.json",
+      "sha256": "fefaa4c939d76366c11e84926984343e35e62726c54774c3d8fd85a83bbf9541",
       "files": [
         {
-          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/hey_sakura-microwakeword.tflite",
+          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/hey_sakura-microwakeword.tflite",
           "sha256": "fccfbb47d37f6d4a00f1c6e3ac44f3ae3c08a1e4a7e9e4e681f58ef597af52a1"
         }
       ]
