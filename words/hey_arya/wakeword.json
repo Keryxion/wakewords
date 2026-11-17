@@ -1,0 +1,9 @@
+{
+  "phrase": "Hey Arya",
+  "models": {
+    "open_wake_word": {
+      "url": "https://github.com/Keryxion/wakeword-training/releases/download/voice-regression-2026-11-10/hey_arya.onnx",
+      "sha256": "df8d9f9e9e07c4e10b032295645773613f3bcce0b7739ad2845c1eacf9f1ae3d"
+    }
+  }
+}

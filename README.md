@@ -10,6 +10,15 @@ Training, evaluations, model binaries and historical candidates live in
 | Hey Sakura | [words/hey_sakura](words/hey_sakura/) | microWakeWord, openWakeWord |
 | Hey Penny | [words/hey_penny](words/hey_penny/) | microWakeWord, openWakeWord |
 | Hey Hermie | [words/hey_hermie](words/hey_hermie/) | microWakeWord, openWakeWord |
+| Hey Arya | [words/hey_arya](words/hey_arya/) | openWakeWord |
+| Hey Hermes | [words/hey_hermes](words/hey_hermes/) | openWakeWord |
+| Penny | [words/penny](words/penny/) | microWakeWord, openWakeWord |
+| Sakura | [words/sakura](words/sakura/) | microWakeWord, openWakeWord |
+| Hermie | [words/hermie](words/hermie/) | microWakeWord, openWakeWord |
+| Arya | [words/arya](words/arya/) | microWakeWord, openWakeWord |
+| Hey Jarvis | [words/hey_jarvis](words/hey_jarvis/) | openWakeWord |
+| Alexa | [words/alexa](words/alexa/) | openWakeWord |
+| Hey Mycroft | [words/hey_mycroft](words/hey_mycroft/) | openWakeWord |
 
 Devices start with a bundled Hey Sakura model. A server reads this dictionary,
 downloads a selected entry's files, verifies their hashes, caches them locally,

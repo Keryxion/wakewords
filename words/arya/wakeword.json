@@ -1,0 +1,19 @@
+{
+  "phrase": "Arya",
+  "models": {
+    "open_wake_word": {
+      "url": "https://github.com/Keryxion/wakeword-training/releases/download/arya-2026-11-13/arya-openwakeword.onnx",
+      "sha256": "edd677eb86534028c5c2f3d0fdcc7b0b27de282699d1884348da05d7da88c84f"
+    },
+    "micro_wake_word": {
+      "url": "https://github.com/Keryxion/wakeword-training/releases/download/arya-2026-11-13/arya-microwakeword.json",
+      "sha256": "cc19e1d97e6f08bca52d7f303bee106391de36f15b9a680d7d8630d3195376af",
+      "files": [
+        {
+          "url": "https://github.com/Keryxion/wakeword-training/releases/download/arya-2026-11-13/arya-microwakeword.tflite",
+          "sha256": "b1c39479ed1f07d86b5081c3e95cbb2faa84dab9dd726ab027384058460b804b"
+        }
+      ]
+    }
+  }
+}

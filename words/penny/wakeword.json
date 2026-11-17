@@ -1,0 +1,19 @@
+{
+  "phrase": "Penny",
+  "models": {
+    "open_wake_word": {
+      "url": "https://github.com/Keryxion/wakeword-training/releases/download/catalog-preservation-2026-11-12/penny-openwakeword.onnx",
+      "sha256": "859690fde0c55331b16b5481be79b595ab042987a693f74b1be8d99ec0aad2f6"
+    },
+    "micro_wake_word": {
+      "url": "https://github.com/Keryxion/wakeword-training/releases/download/catalog-preservation-2026-11-12/penny-microwakeword.json",
+      "sha256": "4b894369c540129d74f7bd01056f26fe8ff9be6ca0def96d12502ccb994fcbd3",
+      "files": [
+        {
+          "url": "https://github.com/Keryxion/wakeword-training/releases/download/catalog-preservation-2026-11-12/penny-microwakeword.tflite",
+          "sha256": "02ad9698380e5d550fcdb5a467c30b82cf15953ca3c8cab6afaa1371dd881460"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "phrase": "Hey Mycroft",
+  "models": {
+    "open_wake_word": {
+      "url": "https://github.com/Keryxion/wakeword-training/releases/download/catalog-preservation-2026-11-12/hey_mycroft_v0.1.onnx",
+      "sha256": "c2a311e8fa1338de89c31b3b46dc4dffd4af2f9a8d6ddead48893c2d301b1f18"
+    }
+  }
+}
