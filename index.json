@@ -2,37 +2,6 @@
   "version": 1,
   "entries": [
     {
-      "id": "alexa",
-      "phrase": "Alexa",
-      "description": "English Alexa wake word for openWakeWord. Upstream openWakeWord model mirrored unchanged.",
-      "version": "1.0.0",
-      "languages": [
-        "en"
-      ],
-      "engines": [
-        "open_wake_word"
-      ],
-      "tags": [
-        "upstream"
-      ],
-      "manifest": "words/alexa/wakeword.json",
-      "readme": "words/alexa/README.md",
-      "evaluations": {
-        "open_wake_word": {
-          "sensitivity": 100.0,
-          "specificity": 100.0,
-          "model_sha256": "6ff566a01d12670e8d9e3c59da32651db1575d17272a601b7f8a39283dfbae3e",
-          "dataset": "bar-all-20261110-quick",
-          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
-          "settings": {
-            "threshold": 0.5,
-            "consecutive_frames": 3
-          },
-          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
-        }
-      }
-    },
-    {
       "id": "arya",
       "phrase": "Arya",
       "description": "English Arya wake word for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
@@ -80,68 +49,6 @@
       }
     },
     {
-      "id": "hey_arya",
-      "phrase": "Hey Arya",
-      "description": "English Hey Arya wake phrase for openWakeWord. Published models with documented accuracy limitations.",
-      "version": "1.0.0",
-      "languages": [
-        "en"
-      ],
-      "engines": [
-        "open_wake_word"
-      ],
-      "tags": [
-        "assistant-name"
-      ],
-      "manifest": "words/hey_arya/wakeword.json",
-      "readme": "words/hey_arya/README.md",
-      "evaluations": {
-        "open_wake_word": {
-          "sensitivity": 100.0,
-          "specificity": 92.31,
-          "model_sha256": "df8d9f9e9e07c4e10b032295645773613f3bcce0b7739ad2845c1eacf9f1ae3d",
-          "dataset": "bar-all-20261110-quick",
-          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
-          "settings": {
-            "threshold": 0.5,
-            "consecutive_frames": 3
-          },
-          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
-        }
-      }
-    },
-    {
-      "id": "hey_hermes",
-      "phrase": "Hey Hermes",
-      "description": "English Hey Hermes wake phrase for openWakeWord. Published models with documented accuracy limitations.",
-      "version": "1.0.0",
-      "languages": [
-        "en"
-      ],
-      "engines": [
-        "open_wake_word"
-      ],
-      "tags": [
-        "assistant-name"
-      ],
-      "manifest": "words/hey_hermes/wakeword.json",
-      "readme": "words/hey_hermes/README.md",
-      "evaluations": {
-        "open_wake_word": {
-          "sensitivity": 100.0,
-          "specificity": 100.0,
-          "model_sha256": "b0fa7b9fc59d8559b83b3c4d00bf22d58b503f9653a97ee71d27528c662096df",
-          "dataset": "bar-all-20261110-quick",
-          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
-          "settings": {
-            "threshold": 0.5,
-            "consecutive_frames": 3
-          },
-          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
-        }
-      }
-    },
-    {
       "id": "hey_hermie",
       "phrase": "Hey Hermie",
       "description": "English Hey Hermie wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
@@ -176,68 +83,6 @@
           "sensitivity": 0.0,
           "specificity": 100.0,
           "model_sha256": "0bed403c967f3ba7e7b67fc75b18edd5cc1d230628d78d571970005ae2c407f4",
-          "dataset": "bar-all-20261110-quick",
-          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
-          "settings": {
-            "threshold": 0.5,
-            "consecutive_frames": 3
-          },
-          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
-        }
-      }
-    },
-    {
-      "id": "hey_jarvis",
-      "phrase": "Hey Jarvis",
-      "description": "English Hey Jarvis wake phrase for openWakeWord. Upstream openWakeWord model mirrored unchanged.",
-      "version": "1.0.0",
-      "languages": [
-        "en"
-      ],
-      "engines": [
-        "open_wake_word"
-      ],
-      "tags": [
-        "upstream"
-      ],
-      "manifest": "words/hey_jarvis/wakeword.json",
-      "readme": "words/hey_jarvis/README.md",
-      "evaluations": {
-        "open_wake_word": {
-          "sensitivity": 100.0,
-          "specificity": 100.0,
-          "model_sha256": "94a13cfe60075b132f6a472e7e462e8123ee70861bc3fb58434a73712ee0d2cb",
-          "dataset": "bar-all-20261110-quick",
-          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
-          "settings": {
-            "threshold": 0.5,
-            "consecutive_frames": 3
-          },
-          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
-        }
-      }
-    },
-    {
-      "id": "hey_mycroft",
-      "phrase": "Hey Mycroft",
-      "description": "English Hey Mycroft wake phrase for openWakeWord. Upstream openWakeWord model mirrored unchanged.",
-      "version": "1.0.0",
-      "languages": [
-        "en"
-      ],
-      "engines": [
-        "open_wake_word"
-      ],
-      "tags": [
-        "upstream"
-      ],
-      "manifest": "words/hey_mycroft/wakeword.json",
-      "readme": "words/hey_mycroft/README.md",
-      "evaluations": {
-        "open_wake_word": {
-          "sensitivity": 100.0,
-          "specificity": 100.0,
-          "model_sha256": "c2a311e8fa1338de89c31b3b46dc4dffd4af2f9a8d6ddead48893c2d301b1f18",
           "dataset": "bar-all-20261110-quick",
           "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
           "settings": {

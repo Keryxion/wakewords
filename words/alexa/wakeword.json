@@ -1,9 +1,0 @@
-{
-  "phrase": "Alexa",
-  "models": {
-    "open_wake_word": {
-      "url": "https://github.com/Keryxion/wakeword-training/releases/download/catalog-preservation-2026-11-12/alexa_v0.1.onnx",
-      "sha256": "6ff566a01d12670e8d9e3c59da32651db1575d17272a601b7f8a39283dfbae3e"
-    }
-  }
-}
