@@ -78,18 +78,18 @@ the source report is pinned to a training-repository commit.
 - **Sensitivity:** intended wake cases detected / total positive cases.
 - **Specificity:** negative cases that stayed quiet / total negative cases.
 
-Each metric stores `percent` (0–100, rounded to two decimal places), `passed`,
-and `total`. For example, the Sakura openWakeWord result is:
+Each metric is a percentage from 0 to 100, rounded to two decimal places.
+For example, the Sakura openWakeWord result is:
 
 ```json
 {
-  "sensitivity": {"percent": 50.0, "passed": 2, "total": 4},
-  "specificity": {"percent": 100.0, "passed": 45, "total": 45}
+  "sensitivity": 50.0,
+  "specificity": 100.0
 }
 ```
 
-Show counts with percentages: **50% (2/4)**. A case counts once, even if its
-recording triggers repeatedly. An unmeasured metric or engine evaluation is
+The index stores percentages; the linked source report preserves test counts.
+A case counts once, even if its recording triggers repeatedly. An unmeasured metric or engine evaluation is
 `null`; missing evidence is never recorded as zero. Each measured evaluation
 also includes `model_sha256`, `dataset`, `conditions`, `settings`, and the source
 `report` URL. Keep distinct test sessions separate; do not pool synthetic and

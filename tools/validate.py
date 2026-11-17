@@ -45,13 +45,8 @@ def validate_evaluations(metadata, models):
             metric = evaluation[name]
             if metric is None:
                 continue
-            if not isinstance(metric, dict):
-                raise ValueError(f"Expected {name} counts or null")
-            passed, total, percent = (metric.get(key) for key in ("passed", "total", "percent"))
-            if type(passed) is not int or type(total) is not int or not 0 <= passed <= total or total == 0:
-                raise ValueError(f"Invalid {name} test counts")
-            if type(percent) not in (int, float) or not math.isfinite(percent) or percent != round(100 * passed / total, 2):
-                raise ValueError(f"{name} percentage disagrees with counts")
+            if type(metric) not in (int, float) or not math.isfinite(metric) or not 0 <= metric <= 100:
+                raise ValueError(f"Expected {name} percentage between 0 and 100, or null")
 
 
 def validate(root, artifacts=None):
