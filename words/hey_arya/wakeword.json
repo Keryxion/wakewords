@@ -1,0 +1,19 @@
+{
+  "phrase": "Hey Arya",
+  "models": {
+    "open_wake_word": {
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.2/hey_arya.onnx",
+      "sha256": "df8d9f9e9e07c4e10b032295645773613f3bcce0b7739ad2845c1eacf9f1ae3d"
+    },
+    "micro_wake_word": {
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.2/hey_arya-microwakeword.json",
+      "sha256": "77204f8aef06174182019c2982f403abc4fdb98e6ee56959069d2eadee8dd332",
+      "files": [
+        {
+          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.2/hey_arya-microwakeword.tflite",
+          "sha256": "f20bcfb6a482f1f4aa55df25c7a9159d7e6cbc06236c43d28ad01be95a4e281a"
+        }
+      ]
+    }
+  }
+}

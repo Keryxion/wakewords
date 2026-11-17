@@ -15,6 +15,7 @@ repository, so older links to it may not mean this catalog.
 
 | Phrase | Entry | Formats |
 | --- | --- | --- |
+| Hey Arya | [words/hey_arya](words/hey_arya/) | microWakeWord, openWakeWord |
 | Hey Sakura | [words/hey_sakura](words/hey_sakura/) | microWakeWord, openWakeWord |
 | Hey Penny | [words/hey_penny](words/hey_penny/) | microWakeWord, openWakeWord |
 | Hey Hermie | [words/hey_hermie](words/hey_hermie/) | microWakeWord, openWakeWord |
