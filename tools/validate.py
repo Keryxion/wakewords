@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 from urllib.parse import urlparse
@@ -14,6 +15,43 @@ SEMVER = re.compile(
     rf"(?:-{PRERELEASE}(?:\.{PRERELEASE})*)?"
     r"(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?"
 )
+
+
+def validate_evaluations(metadata, models):
+    evaluations = metadata.get("evaluations", {})
+    if not isinstance(evaluations, dict) or set(evaluations) - set(models):
+        raise ValueError("Evaluations must refer to an available engine")
+    for engine, evaluation in evaluations.items():
+        if evaluation is None:
+            continue
+        if not isinstance(evaluation, dict):
+            raise ValueError("Expected evaluation metadata or null")
+        artifact = models[engine]
+        if engine == "micro_wake_word":
+            artifact = artifact["files"][0]
+        if evaluation.get("model_sha256") != artifact["sha256"]:
+            raise ValueError("Evaluation refers to a different model")
+        for field in ("dataset", "conditions", "report"):
+            if not isinstance(evaluation.get(field), str) or not evaluation[field].strip():
+                raise ValueError(f"Missing evaluation {field}")
+        report = urlparse(evaluation["report"])
+        if report.scheme != "https" or not report.hostname:
+            raise ValueError("Expected HTTPS evaluation report")
+        if not isinstance(evaluation.get("settings"), dict) or not evaluation["settings"]:
+            raise ValueError("Missing detector settings")
+        for name in ("sensitivity", "specificity"):
+            if name not in evaluation:
+                raise ValueError(f"Missing {name}; use null for unmeasured results")
+            metric = evaluation[name]
+            if metric is None:
+                continue
+            if not isinstance(metric, dict):
+                raise ValueError(f"Expected {name} counts or null")
+            passed, total, percent = (metric.get(key) for key in ("passed", "total", "percent"))
+            if type(passed) is not int or type(total) is not int or not 0 <= passed <= total or total == 0:
+                raise ValueError(f"Invalid {name} test counts")
+            if type(percent) not in (int, float) or not math.isfinite(percent) or percent != round(100 * passed / total, 2):
+                raise ValueError(f"{name} percentage disagrees with counts")
 
 
 def validate(root, artifacts=None):
@@ -97,6 +135,7 @@ def validate(root, artifacts=None):
                 model_name = Path(urlparse(files[0]["url"]).path).name
                 if manifest["model"] != model_name:
                     raise ValueError(f"Manifest references a different model for {phrase}")
+        validate_evaluations(metadata, models)
     return len(entries)
 
 

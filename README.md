@@ -68,6 +68,33 @@ index versions. Every phrase is listed exactly once. Validation checks that the
 listing's ID, phrase, engines, and README agree with its manifest and directory.
 Artifact URLs and hashes remain in the manifest.
 
+## Sensitivity and specificity
+
+Each index entry can include `evaluations`, keyed by engine. Results describe
+one named test dataset and the exact model hash and detector settings. The
+starter measurements come from the recorded `bar-all-20261110-quick` session;
+the source report is pinned to a training-repository commit.
+
+- **Sensitivity:** intended wake cases detected / total positive cases.
+- **Specificity:** negative cases that stayed quiet / total negative cases.
+
+Each metric stores `percent` (0–100, rounded to two decimal places), `passed`,
+and `total`. For example, the Sakura openWakeWord result is:
+
+```json
+{
+  "sensitivity": {"percent": 50.0, "passed": 2, "total": 4},
+  "specificity": {"percent": 100.0, "passed": 45, "total": 45}
+}
+```
+
+Show counts with percentages: **50% (2/4)**. A case counts once, even if its
+recording triggers repeatedly. An unmeasured metric or engine evaluation is
+`null`; missing evidence is never recorded as zero. Each measured evaluation
+also includes `model_sha256`, `dataset`, `conditions`, `settings`, and the source
+`report` URL. Keep distinct test sessions separate; do not pool synthetic and
+human results or imply that host replay is target-device testing.
+
 ## Entry format
 
 Each manifest at `words/<slug>/wakeword.json` contains:
