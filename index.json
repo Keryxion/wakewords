@@ -49,6 +49,39 @@
       }
     },
     {
+      "id": "hey_arya",
+      "phrase": "Hey Arya",
+      "description": "English Hey Arya wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "version": "1.0.0",
+      "languages": [
+        "en"
+      ],
+      "engines": [
+        "micro_wake_word",
+        "open_wake_word"
+      ],
+      "tags": [
+        "assistant-name"
+      ],
+      "manifest": "words/hey_arya/wakeword.json",
+      "readme": "words/hey_arya/README.md",
+      "evaluations": {
+        "micro_wake_word": null,
+        "open_wake_word": {
+          "sensitivity": 100.0,
+          "specificity": 92.31,
+          "model_sha256": "df8d9f9e9e07c4e10b032295645773613f3bcce0b7739ad2845c1eacf9f1ae3d",
+          "dataset": "bar-all-20261110-quick",
+          "conditions": "Human browser microphone recordings in a noisy bar; host replay, not target-device testing.",
+          "settings": {
+            "threshold": 0.5,
+            "consecutive_frames": 3
+          },
+          "report": "https://github.com/Keryxion/wakeword-training/blob/cd2e0182d421b7563f5b428091046a38ab54c947/evaluations/noisy-bar-2026-11-10-summary.json"
+        }
+      }
+    },
+    {
       "id": "hey_hermie",
       "phrase": "Hey Hermie",
       "description": "English Hey Hermie wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
