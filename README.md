@@ -1,9 +1,16 @@
-# Wake-word dictionary
+# Wake-word catalog
 
-A dictionary of installable wake words and phrases, organized like a skills
-repository: one folder per phrase, a machine-readable manifest, and a README.
-Training, evaluations, model binaries and historical candidates live in
-[Keryxion/wakeword-training](https://github.com/Keryxion/wakeword-training).
+The catalog of installable wake words and phrases for the Arya clients, with the
+pinned model for each supported engine. It is organized as a dictionary, like a
+skills repository: one folder per phrase, a machine-readable manifest, and a README.
+
+A phrase is listed here once it has a finished, published model. This
+repository holds no training code, evaluation evidence or model binaries. Those
+live in [Keryxion/wakeword-training](https://github.com/Keryxion/wakeword-training),
+which trains and tests the models and publishes them as the release assets that
+entries here pin by URL and SHA-256. Candidates that were not selected stay there.
+Until 2026-11-17 the name `Keryxion/wakewords` belonged to that training
+repository, so older links to it may not mean this catalog.
 
 | Phrase | Entry | Formats |
 | --- | --- | --- |
