@@ -2,15 +2,15 @@
   "phrase": "Penny",
   "models": {
     "open_wake_word": {
-      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/penny-openwakeword.onnx",
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/penny-openwakeword.onnx",
       "sha256": "859690fde0c55331b16b5481be79b595ab042987a693f74b1be8d99ec0aad2f6"
     },
     "micro_wake_word": {
-      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/penny-microwakeword.json",
-      "sha256": "4b894369c540129d74f7bd01056f26fe8ff9be6ca0def96d12502ccb994fcbd3",
+      "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/penny-microwakeword.json",
+      "sha256": "b8c815a80121d0ad29ea09376ced32d0d06743d69ac41d82b9ed6e7b2db424a4",
       "files": [
         {
-          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17/penny-microwakeword.tflite",
+          "url": "https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/penny-microwakeword.tflite",
           "sha256": "02ad9698380e5d550fcdb5a467c30b82cf15953ca3c8cab6afaa1371dd881460"
         }
       ]

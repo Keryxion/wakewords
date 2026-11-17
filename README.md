@@ -131,9 +131,12 @@ installed model. A phrase configuration alone is not an installable detector.
 ## Add or update a phrase
 
 1. Publish the finished model files as versioned release assets in this
-   repository, byte-identical to the files the training repository built and
-   evaluated, with SHA256SUMS and license attribution. Evaluation evidence stays
-   in the training repository.
+   repository, with SHA256SUMS and license attribution. Model files are
+   byte-identical to the ones the training repository built and evaluated. Each
+   microWakeWord manifest is the training build's manifest with one addition: a
+   top-level `sha256` of its TFLite model, so a device given only the manifest
+   URL can verify the model it downloads. Evaluation evidence stays in the
+   training repository.
 2. Add or update `words/<slug>/wakeword.json`, its README, and `index.json`. Preserve the exact
    phrase, supported engines, pinned artifact URLs and verified hashes. Document
    evaluation limitations and license terms; do not infer device validation.
@@ -143,5 +146,9 @@ installed model. A phrase configuration alone is not an installable detector.
 Every listed file was checked against the release's SHA256SUMS. Their
 READMEs preserve known accuracy limitations. They do not change client defaults.
 
-Private release assets require the server's GitHub access. Credentials remain
-on the server; devices use its existing authenticated download route.
+Release assets are public. A device can add a microWakeWord model directly from
+its manifest URL, for example
+`https://github.com/Keryxion/wakewords/releases/download/models-2026-11-17.1/arya-microwakeword.json`:
+it downloads the manifest, then the TFLite file named beside it, and checks the
+manifest's `sha256`. Devices only compete in wake arbitration for the same
+phrase when they load the same manifest.

@@ -9,7 +9,7 @@ claim. Bare-name models: they answer to "Hermie" on its own. Both are the best H
 - openWakeWord evaluation (`hermie-openwakeword`): Best Hermie openWakeWord candidate on owner recordings (6/12 wakes, 0/50 negatives); detects name-first Hermie, misses Hey/Okay Hermie; below the 90% acceptance target.
 - microWakeWord evaluation (`hermie-microwakeword`): Best Hermie microWakeWord candidate on owner host replay (8/12 wakes, 2/50 negatives); detects name-first Hermie, misses Hey/Okay Hermie; below the 90% acceptance target; ESP32 device test pending.
 
-Source: [models-2026-11-17 release](https://github.com/Keryxion/wakewords/releases/tag/models-2026-11-17). Built and first published in the training repository as [hermie-2026-11-13](https://github.com/Keryxion/wakeword-training/releases/tag/hermie-2026-11-13).
+Source: [models-2026-11-17.1 release](https://github.com/Keryxion/wakewords/releases/tag/models-2026-11-17.1). Built and first published in the training repository as [hermie-2026-11-13](https://github.com/Keryxion/wakeword-training/releases/tag/hermie-2026-11-13).
 Origin: https://github.com/Keryxion/wakeword-training/pull/27
 Evaluation and detector settings: [training repository candidate inventory](https://github.com/Keryxion/wakeword-training/blob/main/catalog/models.json).
 License notes: Training datasets include noncommercial/share-alike terms; retain attribution. See repository documentation.
