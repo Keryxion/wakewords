@@ -18,9 +18,29 @@ keeps its previous wake word until the new model loads successfully.
 This repository supplies data; runtime support is specified in
 [hermes-converse PR #132](https://github.com/Keryxion/hermes-converse/pull/132).
 
+## Dictionary index
+
+Start with [`index.json`](index.json):
+
+```json
+{
+  "version": 1,
+  "entries": [
+    "words/hey_hermie/wakeword.json",
+    "words/hey_penny/wakeword.json",
+    "words/hey_sakura/wakeword.json"
+  ]
+}
+```
+
+`version` identifies the index format. `entries` lists repository-relative
+manifest paths. Fetch the index and manifests from the same resolved commit;
+reject unsupported versions. Every phrase is listed exactly once. The manifest
+contains the phrase and models; the index does not duplicate them.
+
 ## Entry format
 
-Discover entries at `words/<slug>/wakeword.json`. Each contains:
+Each manifest at `words/<slug>/wakeword.json` contains:
 
 - `phrase`: the exact phrase sent in cooperative wake claims.
 - `models`: formats available for that phrase, keyed by `micro_wake_word` or
@@ -43,7 +63,7 @@ installed model. A phrase configuration alone is not an installable detector.
 
 1. Publish the finished model files as versioned release assets in the training
    repository, with checksums, attribution and evaluation evidence.
-2. Add or update `words/<slug>/wakeword.json` and its README. Preserve the exact
+2. Add or update `words/<slug>/wakeword.json`, its README, and `index.json`. Preserve the exact
    phrase, supported engines, pinned artifact URLs and verified hashes. Document
    evaluation limitations and license terms; do not infer device validation.
 3. Verify downloaded bytes against every hash. Run `python3 tools/validate.py`

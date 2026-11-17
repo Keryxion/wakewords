@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "entries": [
+    "words/hey_hermie/wakeword.json",
+    "words/hey_penny/wakeword.json",
+    "words/hey_sakura/wakeword.json"
+  ]
+}

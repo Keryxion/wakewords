@@ -8,9 +8,22 @@ from urllib.parse import urlparse
 
 
 def validate(root, artifacts=None):
-    entries = sorted((root / "words").glob("*/wakeword.json"))
-    if not entries:
-        raise ValueError("Dictionary has no entries")
+    index = json.loads((root / "index.json").read_text())
+    if type(index.get("version")) is not int or index["version"] != 1:
+        raise ValueError("Unsupported dictionary index version")
+    paths = index.get("entries")
+    if not isinstance(paths, list) or not paths:
+        raise ValueError("Dictionary index must list entries")
+    if any(not isinstance(path, str) or not re.fullmatch(
+        r"words/[a-z0-9]+(?:_[a-z0-9]+)*/wakeword\.json", path
+    ) for path in paths):
+        raise ValueError("Invalid dictionary entry path")
+    if len(set(paths)) != len(paths):
+        raise ValueError("Duplicate dictionary entry path")
+    actual = {path.relative_to(root).as_posix() for path in (root / "words").glob("*/wakeword.json")}
+    if set(paths) != actual:
+        raise ValueError("Index must list every entry exactly once, with no missing files")
+    entries = [root / path for path in paths]
     phrases = set()
     for path in entries:
         if not re.fullmatch(r"[a-z0-9]+(?:_[a-z0-9]+)*", path.parent.name):
