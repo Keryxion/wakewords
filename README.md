@@ -43,7 +43,6 @@ an `entries` array with discovery metadata, for example:
         "assistant-name",
         "bundled-default"
       ],
-      "status": "experimental",
       "manifest": "words/hey_sakura/wakeword.json",
       "readme": "words/hey_sakura/README.md"
     }
@@ -57,11 +56,11 @@ by language and engine before fetching a model manifest.
 - `id` is the stable entry slug; `phrase` is its exact wake claim text.
 - `description`, `languages` (language tags), and `tags` support discovery.
 - `engines` lists the formats actually present in the manifest.
-- Each entry's `version` is `major.minor.patch`; it is separate from the root
-  index format version. Start entries at `1.0.0` and bump the entry version
-  when its model artifacts or installation requirements change.
-- `status` is `experimental` or `device_validated`. The latter requires linked
-  target-device evidence in the entry README; host replay alone does not qualify.
+- Each entry's `version` uses semver: `1.0.0` for a stable release,
+  `1.0.0-bldf` or `1.0.0-beta.1` for a prerelease, and optional build metadata
+  such as `1.0.0-beta.1+build.42`. This is separate from the root index format
+  version. Bump the entry version when its model artifacts or installation
+  requirements change.
 - `manifest` and `readme` are repository-relative paths to the entry files.
 
 Fetch the index and manifests from the same resolved commit; reject unsupported

@@ -16,7 +16,6 @@
       "tags": [
         "assistant-name"
       ],
-      "status": "experimental",
       "manifest": "words/hey_hermie/wakeword.json",
       "readme": "words/hey_hermie/README.md"
     },
@@ -35,7 +34,6 @@
       "tags": [
         "assistant-name"
       ],
-      "status": "experimental",
       "manifest": "words/hey_penny/wakeword.json",
       "readme": "words/hey_penny/README.md"
     },
@@ -55,7 +53,6 @@
         "assistant-name",
         "bundled-default"
       ],
-      "status": "experimental",
       "manifest": "words/hey_sakura/wakeword.json",
       "readme": "words/hey_sakura/README.md"
     }

@@ -7,6 +7,15 @@ import re
 from urllib.parse import urlparse
 
 
+NUMERIC = r"(?:0|[1-9][0-9]*)"
+PRERELEASE = r"(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)"
+SEMVER = re.compile(
+    rf"{NUMERIC}\.{NUMERIC}\.{NUMERIC}"
+    rf"(?:-{PRERELEASE}(?:\.{PRERELEASE})*)?"
+    r"(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?"
+)
+
+
 def validate(root, artifacts=None):
     index = json.loads((root / "index.json").read_text())
     if type(index.get("version")) is not int or index["version"] != 1:
@@ -42,8 +51,8 @@ def validate(root, artifacts=None):
         if not isinstance(description, str) or not description.strip():
             raise ValueError(f"Missing description for {phrase}")
         version = metadata.get("version")
-        if not isinstance(version, str) or not re.fullmatch(r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)", version):
-            raise ValueError(f"Expected entry version major.minor.patch for {phrase}")
+        if not isinstance(version, str) or not SEMVER.fullmatch(version):
+            raise ValueError(f"Expected semver entry version for {phrase}")
         for field in ("languages", "engines", "tags"):
             values = metadata.get(field)
             if not isinstance(values, list) or not values or any(
@@ -52,8 +61,6 @@ def validate(root, artifacts=None):
                 raise ValueError(f"Expected unique nonempty {field} for {phrase}")
         if any(not re.fullmatch(r"[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*", language) for language in metadata["languages"]):
             raise ValueError(f"Invalid language tag for {phrase}")
-        if metadata.get("status") not in ("experimental", "device_validated"):
-            raise ValueError(f"Missing evaluation status for {phrase}")
         if metadata.get("readme") != path.with_name("README.md").relative_to(root).as_posix():
             raise ValueError(f"Index README differs from entry: {path}")
         if not path.with_name("README.md").is_file():
