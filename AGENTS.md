@@ -17,4 +17,4 @@ and git diff --check. Verify downloaded bytes before publishing new artifact pin
 
 These files have copies or dependents in other Keryxion repositories; a change here also belongs there.
 
-- Entries pin Keryxion/wakeword-training release assets, and the Arya clients' `models/downloads/*.json` and `docs/wakeword-recommendations.md` follow this index: a change here is incomplete until both sides agree.
+- Entries pin Keryxion/wakeword-training release assets; Keryxion/hermes-converse serves this index to every device, and the Arya clients bundle the Hey Arya entry's models: a changed entry reaches every device, and a changed Hey Arya model is not what new devices start with until the clients' bundled copies follow.
