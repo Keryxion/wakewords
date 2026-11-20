@@ -12,3 +12,9 @@ or authorize changing client defaults. Do not commit credentials or binaries.
 
 Use a feature branch and PR for subsequent changes. Run python3 tools/validate.py
 and git diff --check. Verify downloaded bytes before publishing new artifact pins.
+
+## Shared with other repos
+
+These files have copies or dependents in other Keryxion repositories; a change here also belongs there.
+
+- Entries pin Keryxion/wakeword-training release assets, and the Arya clients' `models/downloads/*.json` and `docs/wakeword-recommendations.md` follow this index: a change here is incomplete until both sides agree.
