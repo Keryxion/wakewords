@@ -61,7 +61,8 @@
         "open_wake_word"
       ],
       "tags": [
-        "assistant-name"
+        "assistant-name",
+        "bundled-default"
       ],
       "manifest": "words/hey_arya/wakeword.json",
       "readme": "words/hey_arya/README.md",
@@ -184,8 +185,7 @@
         "open_wake_word"
       ],
       "tags": [
-        "assistant-name",
-        "bundled-default"
+        "assistant-name"
       ],
       "manifest": "words/hey_sakura/wakeword.json",
       "readme": "words/hey_sakura/README.md",
