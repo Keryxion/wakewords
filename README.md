@@ -24,7 +24,7 @@ repository, so older links to it may not mean this catalog.
 | Hermie | [words/hermie](words/hermie/) | microWakeWord, openWakeWord |
 | Arya | [words/arya](words/arya/) | microWakeWord, openWakeWord |
 
-Devices start with a bundled Hey Sakura model. A server reads this dictionary,
+Devices start with a bundled Hey Arya model. A server reads this dictionary,
 downloads a selected entry's files, verifies their hashes, caches them locally,
 and commands the device to switch. The device downloads from the server and
 keeps its previous wake word until the new model loads successfully.
@@ -41,9 +41,9 @@ an `entries` array with discovery metadata, for example:
   "version": 1,
   "entries": [
     {
-      "id": "hey_sakura",
-      "phrase": "Hey Sakura",
-      "description": "English Hey Sakura wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
+      "id": "hey_arya",
+      "phrase": "Hey Arya",
+      "description": "English Hey Arya wake phrase for microWakeWord and openWakeWord. Published models with documented accuracy limitations.",
       "version": "1.0.0",
       "languages": [
         "en"
@@ -56,8 +56,8 @@ an `entries` array with discovery metadata, for example:
         "assistant-name",
         "bundled-default"
       ],
-      "manifest": "words/hey_sakura/wakeword.json",
-      "readme": "words/hey_sakura/README.md"
+      "manifest": "words/hey_arya/wakeword.json",
+      "readme": "words/hey_arya/README.md"
     }
   ]
 }
